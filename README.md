@@ -2,7 +2,7 @@
 
 Um guia prático e interativo no formato **Google Codelabs** ensinando como acelerar o desenvolvimento Android diretamente pelo terminal e potencializar agentes de IA (Gemini CLI, Antigravity, Claude Code, Cursor) utilizando o **Android CLI** e as **Android Skills**.
 
-🔗 **Acesse o Codelab Interativo:** [https://aline-aayres.github.io/codelab-android-cli-skills/](https://aline-aayres.github.io/codelab-android-cli-skills/)
+🔗 **Acesse o Codelab Interativo:** [https://aline-aayres.github.io/android-cli-skills-codelab/](https://aline-aayres.github.io/android-cli-skills-codelab/)
 
 ---
 
