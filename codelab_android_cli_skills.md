@@ -1,12 +1,15 @@
 summary: Aprenda a instalar, configurar e acelerar o desenvolvimento Android diretamente pelo terminal utilizando o Android CLI e as Android Skills para agentes de IA.
-id: android-cli-e-android-skills
-categories: Android, CLI, AI Agents, Productivity
-tags: android-cli, android-skills, gemini, terminal, devops
-status: Published
-authors: Autor do Codelab
-Feedback Link: https://github.com/android/skills/issues
 
-# Dominando o Android CLI e Android Skills: Desenvolvimento Android Ágil pelo Terminal
+id: android-cli-e-android-skills
+
+categories: Android, CLI, AI Agents, Productivity
+
+tags: android-cli, android-skills, gemini, terminal, devops
+
+status: Published
+authors: Aline Ayres
+
+# Codelab Android CLI e Android Skills: Desenvolvimento Android com Agentes de IA pelo Terminal
 
 ## 1. Introdução e Pré-requisitos
 Duration: 03:00
