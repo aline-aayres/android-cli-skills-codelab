@@ -7,6 +7,7 @@ categories: Android, CLI, AI Agents, Productivity
 tags: android-cli, android-skills, gemini, terminal, devops
 
 status: Published
+
 authors: Aline Ayres
 
 # Codelab Android CLI e Android Skills: Desenvolvimento Android com Agentes de IA pelo Terminal
