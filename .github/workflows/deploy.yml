@@ -35,19 +35,24 @@ jobs:
           claat version
 
       - name: Export Markdown to Codelab HTML
+        env:
+          REPO_URL: https://github.com/${{ github.repository }}
         run: |
           mkdir -p public
           claat export -o public codelab_android_cli_skills.md
           mv public/android-cli-skills-codelab/* public/
           rmdir public/android-cli-skills-codelab
           cp wrapup.html public/wrapup.html
-          python3 -c '
+          python3 - << 'EOF'
+          import os
           import pathlib
+
           p = pathlib.Path("public/index.html")
           html = p.read_text(encoding="utf-8")
           done_url = "./wrapup.html"
-          repo_url = "https://github.com/${{ github.repository }}"
-          html = html.replace("<google-codelab ", f"<google-codelab home-url=\"{done_url}\" ")
+          repo_url = os.environ["REPO_URL"]
+
+          html = html.replace("<google-codelab ", f'<google-codelab home-url="{done_url}" ')
           fix_script = f"""<script>
             document.addEventListener("click", function(e) {{
               const doneBtn = e.target.closest("#done");
@@ -57,7 +62,7 @@ jobs:
                 window.location.href = "{done_url}";
                 return;
               }}
-              const closeBtn = e.target.closest("#arrow-back, a[href=\\"/\\"]");
+              const closeBtn = e.target.closest("#arrow-back, a[href=\"/\"]");
               if (closeBtn) {{
                 e.preventDefault();
                 e.stopImmediatePropagation();
@@ -67,7 +72,7 @@ jobs:
           </script></body>"""
           html = html.replace("</body>", fix_script)
           p.write_text(html, encoding="utf-8")
-          '
+          EOF
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
