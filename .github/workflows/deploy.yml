@@ -40,8 +40,28 @@ jobs:
           claat export -o public codelab_android_cli_skills.md
           mv public/android-cli-skills-codelab/* public/
           rmdir public/android-cli-skills-codelab
-          # Redireciona os botões "Fechar (X)" e "Done" para a página do repositório no GitHub (evita erro 404)
+          # 1. Substitui links estáticos href="/"
           sed -i "s|href=\"/\"|href=\"https://github.com/${{ github.repository }}\"|g" public/index.html
+          # 2. Define home-url no web component e intercepta cliques em Done / Fechar (X)
+          python3 -c '
+          import pathlib
+          p = pathlib.Path("public/index.html")
+          html = p.read_text(encoding="utf-8")
+          repo_url = "https://github.com/${{ github.repository }}"
+          html = html.replace("<google-codelab ", f"<google-codelab home-url=\"{repo_url}\" ")
+          fix_script = f"""<script>
+            document.addEventListener("click", function(e) {{
+              const btn = e.target.closest("#done, #arrow-back, a[href=\\"/\\"]");
+              if (btn) {{
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                window.location.href = "{repo_url}";
+              }}
+            }}, true);
+          </script></body>"""
+          html = html.replace("</body>", fix_script)
+          p.write_text(html, encoding="utf-8")
+          '
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
