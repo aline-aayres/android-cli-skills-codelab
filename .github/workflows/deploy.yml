@@ -40,6 +40,8 @@ jobs:
           claat export -o public codelab_android_cli_skills.md
           mv public/android-cli-skills-codelab/* public/
           rmdir public/android-cli-skills-codelab
+          # Redireciona os botões "Fechar (X)" e "Done" para a página do repositório no GitHub (evita erro 404)
+          sed -i "s|href=\"/\"|href=\"https://github.com/${{ github.repository }}\"|g" public/index.html
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
