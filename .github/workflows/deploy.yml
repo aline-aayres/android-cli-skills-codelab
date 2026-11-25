@@ -40,7 +40,7 @@ jobs:
           claat export -o public codelab_android_cli_skills.md
           mv public/android-cli-skills-codelab/* public/
           rmdir public/android-cli-skills-codelab
-          cp conclusao.html public/conclusao.html
+          cp wrapup.html public/wrapup.html
           python3 -c '
           import pathlib
           p = pathlib.Path("public/index.html")
